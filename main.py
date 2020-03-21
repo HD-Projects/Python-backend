@@ -1,15 +1,20 @@
 import smtplib
 import json
-from lists import *
-import cgi
 import time
 import sys
+try:
+  from lists import (names,emails)
+except:
+  ListsFileOpen = open("lists.py", "w")
+  ListsFileOpen.write("names = []\nemails = []")
+  print("Debug Info: Created lists.py file to dump names and emails\n")
+  ListsFileOpen.close()
+  from lists import (names,emails)
+import cgi
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 listToWrite = ["hi","this","is","a","test"]
-
-print ("Content-type: text/html")
 
 messages = """<html>
 <head><title>My first Python CGI app</title></head>
@@ -32,8 +37,8 @@ listLen = 0
 
 class email:
   def save():
-    print(emails)
-    print(names)
+    print("Debug Info: Names:"+names)
+    print("Debug Info: Emails:"+emails)
     theLists = open("lists.py", "w")
     stringToSave = 'names = ['
     for i in range(len(names)-1):
@@ -44,11 +49,10 @@ class email:
       stringToSave = stringToSave+'"'+emails[i]+'",'
     stringToSave = stringToSave+'"'+emails[(len(emails)-1)]+'"]'
     theLists.write(str(stringToSave))
-    print(stringToSave)
+    print("Debug Info: Saved String: "+stringToSave)
   def loginSMTP():
-    provider = input("What provider do you want to use Gmail(G), Outlook(O), Yahoo(Y), AOL(A) \n")
-    theirUsername = str(input("What is your username \n"))
-    password = str(input("What is your password \n"))
+    theirUsername = str(input("What is your Gmail account Email address \n"))
+    password = str(input("What is your Gmail password \n"))
     print("Debug Info: Username, "+  theirUsername+" Password, "+password)
     # Authentication
     try:
@@ -59,8 +63,10 @@ class email:
     try: 
       s.login(str(theirUsername), str(password))
       print("Debug Info: Succesful you are now logged in and can send emails\n\n")
+      loginWorked = 1
     except:
-      print("Debug Info: Login Failed \n\n")
+      print("Debug Info: Login Failed \nTry changing you allow less secure app access in your gmail account settings, Or reenter your credentials\n\n")
+      loginWorked = 0
   def addEmail():
     nameInput = str(input("What is the Name you would like to append\n"))
     names.append(nameInput)
@@ -104,22 +110,31 @@ class email:
       msg['From']=theirUsername
       msg['To']=emails[i]
       msg['Subject']=subject
-      msg.attach(MIMEText("Dear "+names[i]+",\n\n"+str(message)+"\n"+nameOfSender+"\n"+title, 'plain'))
+      msg.attach(MIMEText("Dear "+names[i]+",\n\n"+str(message)+"\n\n"+nameOfSender+"\n"+title, 'plain'))
       text = msg.as_string()
       s.sendmail("asteroid.dodge.devs@gmail.com", emails[i], text)
       print("\n\nSent, "+text)
       msg = ""
   def choose():
-    choice = input("What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\nSend an Email(S)\n")
+    inputString = ("What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\n")
+    if loginWorked == 1:
+        inputString = inputString+"Send an Email(S)\n"
+    else:
+        inputString = inputString+"Login(L)\n"
+    loginWorked = 1
+    choice = input()
     
-    if choice == "A":
+    if choice.lower() == "a":
       email.addEmail()
       email.choose()
-    elif choice == "R":
+    elif choice.lower() == "r":
       email.removeEmail()
       email.choose()
-    elif choice == "S":
+    elif choice.lower() == "s":
       email.sendEmail()
+      email.choose()
+    elif choice.lower() == "l":
+      email.loginSMTP()
       email.choose()
     else:
       print("Debug Info: Session Finnished")
