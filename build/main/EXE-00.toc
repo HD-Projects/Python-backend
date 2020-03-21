@@ -2872,7 +2872,7 @@
  [],
  False,
  False,
- 1584824618,
+ 1584825010,
  [('run.exe',
    'c:\\users\\adick\\appdata\\local\\programs\\python\\python38\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',
    'EXECUTABLE')])
