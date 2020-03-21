@@ -1,16 +1,9 @@
 import smtplib
-try:
-  from lists import (names,emails)
-except:
-  ListsFileOpen = open("lists.py", "w")
-  ListsFileOpen.write("names = []\nemails = []")
-  print("Debug Info: Created lists.py file to dump names and emails\n")
-  ListsFileOpen.close()
-  from lists import (names,emails)
+ThatFile = open("lists.py", "a")
+ThatFile.close()
+from lists import *
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
-listToWrite = ["hi","this","is","a","test"]
 
 s = smtplib.SMTP('smtp.gmail.com', 587) 
 
@@ -23,12 +16,20 @@ theirUsername = ""
 l = "smtp.gmail.com"
 s = smtplib.SMTP(l, 587)
 listLen = 0
-login = 0
+login = 0 
+
+try:
+  if names[0] == names[0]:
+    names = names
+    emails = emails
+except:
+  names = []
+  emails = []
 
 class email:
   def save():
-    print("Debug Info: Names:"+names)
-    print("Debug Info: Emails:"+emails)
+    print("Debug Info: Names:"+str(names))
+    print("Debug Info: Emails:"+str(emails))
     theLists = open("lists.py", "w")
     stringToSave = 'names = ['
     for i in range(len(names)-1):
@@ -53,8 +54,8 @@ class email:
     login = 0
     try: 
       s.login(str(theirUsername), str(password))
-      print("Debug Info: Succesful you are now logged in and can send emails\n\n")
       login = 1
+      print("Debug Info: Succesful you are now logged in and can send emails\n\n")
     except:
       print("Debug Info: Login Failed \nTry changing you allow less secure app access in your gmail account settings, Or reenter your credentials\n\n")
       login = 0
@@ -107,13 +108,7 @@ class email:
       print("\n\nSent, "+text)
       msg = ""
   def choose():
-    inputString = ("What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\n")
-    if (login == 1):
-      inputString = inputString+"Send an Email(S)\n"
-    else:
-      inputString = inputString+"Login(L)\n"
-    
-    loginWorked = 1
+    inputString = "What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\nSend an Email(S)\nLogin or change accounts(L)\n"
     choice = input(inputString)
     
     if choice.lower() == "a":
@@ -132,8 +127,6 @@ class email:
       print("Debug Info: Session Finished, all personal information deleting...")
       theirUsername = ""
       password = ""
-      print(".\n")
-      print(".\n")
       print("All personal information has been deleted")
 
 email.loginSMTP()
