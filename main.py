@@ -16,13 +16,6 @@ from email.mime.text import MIMEText
 
 listToWrite = ["hi","this","is","a","test"]
 
-messages = """<html>
-<head><title>My first Python CGI app</title></head>
-<body>
-<p>Hello, 'world'!</p>
-</body>
-</html>"""
-
 s = smtplib.SMTP('smtp.gmail.com', 587) 
 
 username = ""
@@ -34,6 +27,7 @@ theirUsername = ""
 l = "smtp.gmail.com"
 s = smtplib.SMTP(l, 587)
 listLen = 0
+loginWorked = 0
 
 class email:
   def save():

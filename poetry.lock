@@ -1,0 +1,14 @@
+[[package]]
+category = "main"
+description = "some functions for list"
+name = "lists"
+optional = false
+python-versions = "*"
+version = "1.3.0"
+
+[metadata]
+content-hash = "49d785eb855c170f3d183f7e3f1bf0cc1417978c0902c999f983421bb0609586"
+python-versions = "^3.7"
+
+[metadata.hashes]
+lists = ["dfd811c86939a4a02657c64f8dcbb1f4af3e2f3aee42836c1db7add63bd04ec9"]
