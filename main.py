@@ -27,7 +27,7 @@ theirUsername = ""
 l = "smtp.gmail.com"
 s = smtplib.SMTP(l, 587)
 listLen = 0
-loginWorked = 0
+login = 0
 
 class email:
   def save():
@@ -54,13 +54,14 @@ class email:
        print("Debug Info: TLS Worked")
     except:
        print("Debug Info: TLS Failed") 
+    login = 0
     try: 
       s.login(str(theirUsername), str(password))
       print("Debug Info: Succesful you are now logged in and can send emails\n\n")
-      loginWorked = 1
+      login = 1
     except:
       print("Debug Info: Login Failed \nTry changing you allow less secure app access in your gmail account settings, Or reenter your credentials\n\n")
-      loginWorked = 0
+      login = 0
   def addEmail():
     nameInput = str(input("What is the Name you would like to append\n"))
     names.append(nameInput)
@@ -111,12 +112,13 @@ class email:
       msg = ""
   def choose():
     inputString = ("What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\n")
-    if loginWorked == 1:
-        inputString = inputString+"Send an Email(S)\n"
+    if (login == 1):
+      inputString = inputString+"Send an Email(S)\n"
     else:
-        inputString = inputString+"Login(L)\n"
+      inputString = inputString+"Login(L)\n"
+    
     loginWorked = 1
-    choice = input()
+    choice = input(inputString)
     
     if choice.lower() == "a":
       email.addEmail()
