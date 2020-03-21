@@ -1,7 +1,4 @@
 import smtplib
-import json
-import time
-import sys
 try:
   from lists import (names,emails)
 except:
@@ -10,7 +7,6 @@ except:
   print("Debug Info: Created lists.py file to dump names and emails\n")
   ListsFileOpen.close()
   from lists import (names,emails)
-import cgi
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -45,8 +41,8 @@ class email:
     theLists.write(str(stringToSave))
     print("Debug Info: Saved String: "+stringToSave)
   def loginSMTP():
-    theirUsername = str(input("What is your Gmail account Email address \n"))
-    password = str(input("What is your Gmail password \n"))
+    theirUsername = str(input("What is your Gmail account Email address? \n"))
+    password = str(input("What is your Gmail password?\n"))
     print("Debug Info: Username, "+  theirUsername+" Password, "+password)
     # Authentication
     try:
@@ -63,7 +59,7 @@ class email:
       print("Debug Info: Login Failed \nTry changing you allow less secure app access in your gmail account settings, Or reenter your credentials\n\n")
       login = 0
   def addEmail():
-    nameInput = str(input("What is the Name you would like to append\n"))
+    nameInput = str(input("What is the Name you would like to add to the name list\n"))
     names.append(nameInput)
     emailInput = str(input("What is the email of the reciver\n"))
     emails.append(emailInput)
@@ -133,7 +129,12 @@ class email:
       email.loginSMTP()
       email.choose()
     else:
-      print("Debug Info: Session Finnished")
+      print("Debug Info: Session Finished, all personal information deleting...")
+      theirUsername = ""
+      password = ""
+      print(".\n")
+      print(".\n")
+      print("All personal information has been deleted")
 
 email.loginSMTP()
 email.choose()
