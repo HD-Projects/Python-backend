@@ -23,8 +23,8 @@ try:
     names = names
     emails = emails
 except:
-  names = []
-  emails = []
+  names = ["Alex", "Riley","Alex"]
+  emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org"]
 
 class email:
   def save():
