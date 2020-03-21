@@ -80,6 +80,8 @@ class email:
   def sendEmail():
     subject = input("What Is The Subject Of Your Message \n")
     message = input("Message\nDear *[name]*,\n\n")
+    nameOfSender = input("What is the name you would like at the end of your email?\n")
+    title = input("What is your job title")
     index = 0
     i = 0
     for i in range(len(names)):
@@ -102,7 +104,7 @@ class email:
       msg['From']=theirUsername
       msg['To']=emails[i]
       msg['Subject']=subject
-      msg.attach(MIMEText("Dear "+names[i]+",\n\n"+str(message), 'plain'))
+      msg.attach(MIMEText("Dear "+names[i]+",\n\n"+str(message)+"\n"+nameOfSender+"\n"+title, 'plain'))
       text = msg.as_string()
       s.sendmail("asteroid.dodge.devs@gmail.com", emails[i], text)
       print("\n\nSent, "+text)
