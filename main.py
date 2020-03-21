@@ -18,14 +18,6 @@ s = smtplib.SMTP(l, 587)
 listLen = 0
 login = 0 
 
-try:
-  if names[0] == names[0]:
-    names = names
-    emails = emails
-except:
-  names = ["Alex", "Riley","Alex"]
-  emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org"]
-
 class email:
   def save():
     print("Debug Info: Names:"+str(names))
@@ -128,6 +120,15 @@ class email:
       theirUsername = ""
       password = ""
       print("All personal information has been deleted")
+
+try:
+  if names[0] == names[0]:
+    names = names
+    emails = emails
+except:
+  names = ["Alex", "Riley","Alex"]
+  emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org"]
+  email.save()
 
 email.loginSMTP()
 email.choose()
