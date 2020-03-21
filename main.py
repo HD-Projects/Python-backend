@@ -101,11 +101,11 @@ class email:
       # setup the parameters of the message
       msg['From']=theirUsername
       msg['To']=emails[i]
-      msg['Subject']="This is TEST"
+      msg['Subject']=subject
       msg.attach(MIMEText("Dear "+names[i]+",\n\n"+message, 'plain'))
       text = msg.as_string()
       s.sendmail("asteroid.dodge.devs@gmail.com", emails[i], text)
-      print("Sent, "+text)
+      print("\n\nSent, "+text)
       msg = ""
   def choose():
     choice = input("What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\nSend an Email(S)\n")
