@@ -102,7 +102,7 @@ class email:
       msg['From']=theirUsername
       msg['To']=emails[i]
       msg['Subject']=subject
-      msg.attach(MIMEText("Dear "+names[i]+",\n\n"+message, 'plain'))
+      msg.attach(MIMEText("Dear "+names[i]+",\n\n"+str(message), 'plain'))
       text = msg.as_string()
       s.sendmail("asteroid.dodge.devs@gmail.com", emails[i], text)
       print("\n\nSent, "+text)
