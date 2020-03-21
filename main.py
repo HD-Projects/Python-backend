@@ -32,7 +32,7 @@ class email:
       stringToSave = stringToSave+'"'+emails[i]+'",'
     stringToSave = stringToSave+'"'+emails[(len(emails)-1)]+'"]'
     theLists.write(str(stringToSave))
-    print("Debug Info: Saved String: "+stringToSave)
+    print("Debug Info: Saved String: \n"+stringToSave)
   def loginSMTP():
     theirUsername = str(input("What is your Gmail account Email address? \n"))
     password = str(input("What is your Gmail password?\n"))
