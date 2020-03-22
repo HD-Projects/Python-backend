@@ -12,7 +12,7 @@ s = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
 
 username = ""
 password = ""
-
+interactionCount = "0"
 name = ""
 theirUsername = ""
 
@@ -20,9 +20,14 @@ listLen = 0
 login = 0 
 
 class email:
+  def DI(DebugLog):
+    print("Debug Info: "+DebugLog)
+    debugFile = open("debug.txt","a")
+    debugFile.write("\nDebug Info: "+DebugLog)
+    debugFile.close
   def save():
-    print("Debug Info: Names:"+str(names))
-    print("Debug Info: Emails:"+str(emails))
+    email.DI("Names:"+str(names))
+    email.DI("Emails:"+str(emails))
     theLists = open("lists.py", "w")
     stringToSave = 'names = ['
     for i in range(len(names)-1):
@@ -33,24 +38,17 @@ class email:
       stringToSave = stringToSave+'"'+emails[i]+'",'
     stringToSave = stringToSave+'"'+emails[(len(emails)-1)]+'"]'
     theLists.write(str(stringToSave))
-    print("Debug Info: Saved String: \n"+stringToSave)
+    email.DI("Saved String: \n"+stringToSave)
   def loginSMTP():
     theirUsername = str(input("What is your Gmail account Email address? \n"))
     password = str(input("What is your Gmail password?\n"))
-    print("Debug Info: Username, "+  theirUsername+" Password, "+password)
-    # Authentication
-    #try:
-    #   s.starttls()
-    #   print("Debug Info: TLS Worked")
-    #except:
-    #   print("Debug Info: TLS Failed") 
-    #login = 0
+    email.DI("Debug Info: Username, "+  theirUsername+" Password, "+password)
     try: 
       s.login(str(theirUsername), str(password))
       login = 1
       print("Debug Info: Succesful you are now logged in and can send emails\n\n")
     except:
-      print("Debug Info: Login Failed \Reenter your credentials\n\n")
+      print("Debug Info: Login Failed \nReenter your credentials\n or turn on less secure app access in your gmail account settings\n\n")
       login = 0
   def addEmail():
     nameInput = str(input("What is the Name you would like to add to the name list\n"))
@@ -58,64 +56,173 @@ class email:
     emailInput = str(input("What is the email of the reciver\n"))
     emails.append(emailInput)
     email.save()
+    email.DI("Added Email: "+emailInput+"Name: "+nameInput)
   def removeEmail():
     removeName = input("What is the name you want to remove\n")
     listLen = 0
     try:
       listLen = names.index(removeName)
     except:
-      print("Debug Info: Failed to find "+removeName+" in list")
+      email.DI("Failed to find "+removeName+" in list")
     emails.remove(emails[listLen])
     names.remove(names[listLen])
     email.save()
   def sendEmail():
     subject = input("What Is The Subject Of Your Message \n")
-    message = input("Message\nDear *[name]*,\n\n")
-    nameOfSender = input("What is the name you would like at the end of your email?\n")
-    title = input("What is your job title")
+    sendingName = input("What do you want your name to show as\n")
+    html = input("Do you want to send html content(Y/N) \n")
     index = 0
-    i = 0
-    for i in range(len(names)):
-      index += 1
-      if (index > 10):
-        index = 0
-        s.quit()
-        try: 
-          s.login(str(theirUsername), str(password))
-          print("Debug Info: Succesful you are now logged in and can send emails\n\n")
+    if html.lower() == "y":
+      htmlFile = str(input("Make sure the file is in the same folder as the .EXE or .PY file\nWhat is the name of the file\n"))
+      htmlFileOpened = open(htmlFile,"r")
+      htmlContent = htmlFileOpened.read()
+      for i in range(len(names)):
+        index += 1
+        if (index > 10):
+          index = 0
+          s.quit()
+          try: 
+            s.login(str(theirUsername), str(password))
+            email.DI("Succesful you are now logged in and can send emails\n\n")
+          except:
+            email.DI("Login Failed \n\n")
+        msg = MIMEMultipart()       # create a message
+        # setup the parameters of the message
+        msg['From']=sendingName
+        msg['To']=emails[i]
+        msg['Subject']=subject
+        msg.attach(MIMEText(htmlContent, "html"))
+        text = msg.as_string()
+        s.sendmail(theirUsername, emails[i], text)
+        print("\n\nSent, "+text)
+        msg = ""
+    else:
+      textFile = input("Do you have a .TXT file you want to add from(Y/N)\n")
+      if textFile.lower() == "y":
+        textFileName = str(input("What is the text files name\nMake sure it is in the same folder as the .EXE or .PY file\nWill write Dear, *[Name]*\n"))
+        try:
+          textFileOpened = open(textFileName, "r")
+          message = textFileOpened.read()
+          textFileOpened.close()
+          email.DI("File Opened")
         except:
-          print("Debug Info: Login Failed \n\n")
-      msg = MIMEMultipart()       # create a message
-      # setup the parameters of the message
-      msg['From']=theirUsername
-      msg['To']=emails[i]
-      msg['Subject']=subject
-      msg.attach(MIMEText("Dear "+names[i]+",\n\n"+str(message)+"\n\n"+nameOfSender+"\n"+title, 'plain'))
-      text = msg.as_string()
-      s.sendmail("asteroid.dodge.devs@gmail.com", emails[i], text)
-      print("\n\nSent, "+text)
-      msg = ""
+          email.DI("File did not work")
+          return 0
+      else:
+        message = input("Message\nDear *[name]*,\n\n")
+        nameOfSender = input("What is the name you would like at the end of your email?\n")
+        title = input("What is your title (Dr. , Sir , Esquire)\n")
+      for i in range(len(names)):
+        index += 1
+        if (index > 10):
+          index = 0
+          s.quit()
+          try: 
+            s.login(str(theirUsername), str(password))
+            email.DI("Succesful you are now logged in and can send emails\n\n")
+          except:
+            email.DI("Login Failed \n\n")
+        msg = MIMEMultipart()       # create a message
+        # setup the parameters of the message
+        msg['From']=sendingName
+        msg['To']=emails[i]
+        msg['Subject']=subject
+        msg.attach(MIMEText("Dear "+names[i]+",\n\n"+str(message)+"\n\n"+signature, 'plain'))
+        text = msg.as_string()
+        s.sendmail(theirUsername, emails[i], text)
+        print("\n\nSent, "+text)
+        msg = ""
+  def sendDebugInfo():
+    debugInfoRead = open("debug.txt","r")
+    sendDebugInfo = debugInfoRead.read()
+    debugInfoRead.close()
+    msg = MIMEMultipart()       # create a message
+    # setup the parameters of the message
+    msg['From']=theirUsername
+    msg['To']="debug.info.python.backend@gmail.com"
+    msg['Subject']="Sending Debug info from "+theirUsername
+    msg.attach(MIMEText(str(sendDebugInfo), 'plain'))
+    text = msg.as_string()
+    s.sendmail(theirUsername, "debug.info.python.backend@gmail.com", text)
   def choose():
-    inputString = "What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\nSend an Email(S)\nLogin or change accounts(L)\n"
+    interactionCount = int(interactionCount)+1
+    inputString = "What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\nSend an Email(S)\nLogin or change accounts(L)\n send debug info (d)"
     choice = input(inputString)
-    
-    if choice.lower() == "a":
-      email.addEmail()
+    email.DI("Interaction #"+interactionCount+" Choice of choice string "+choice)
+    if choice.lower() == "D":
+      email.DI("Interaction #"+interactionCount+" Sending Debug Info!")
+      email.sendDebugInfo()
       email.choose()
+    elif choice.lower() == "a":
+      email.DI("Interaction #"+interactionCount+" Adding Email")
+      emailChoice = input("Do you want to upload a txt file with your contacts in it (a) or enter recivers manually(B)")
+      if emailChoice.lower() == "b":
+        email.DI("Interaction #"+interactionCount+" Manually Inputing emails")
+        email.addEmail()
+        email.choose()
+      elif emailChoice.lower() == "a":
+        email.DI("Interaction #"+interactionCount+" Adding File")
+        fileNameEmail = input("what is the name of the file of emails") 
+        print("rename the file of emails to fileOfEmails.csv or fileOfEmails.txt depending on the formant")
+        fileOfEmails = open(fileNameEmail, "r")
+        print("rename the file to fileOfNames.csv or fileOfNames.txt depending on the format")
+        fileNameName = input("what is the name of the file of names") 
+        fileOfNames = open(fileNameName, "r")
+        
+        if fileOfEmails == "fileOfEmails.csv":
+          reader = csv.reader(fileOfEmails)
+          next(reader) #skips header
+          for r in reader:
+            r = email
+            emails.append(email)
+            emails.save()
+
+        elif fileOfEmails == "filesOfEmails.txt":
+         for line in fileOfEmails:
+          line = email
+          emails.append(email)
+          emails.save()
+
+        else:
+          print("there was an error try again ")
+
+        if fileOfNames == "fileOfNames.txt":
+          for line in fileOfNames:
+            line = name
+            names.append(name)
+            names.save()
+
+
+        elif fileOfNames == "fileOfNames.csv":
+          reader = csv.reader(fileOfNames)
+          next(reader) #skips header
+          for r in reader:
+            r = name
+            names.append(name)
+            names.save(name)     
+        
+        else:
+          print("there was an error, try again")
     elif choice.lower() == "r":
+      email.DI("Interaction #"+interactionCount+" Remove Email")
       email.removeEmail()
       email.choose()
     elif choice.lower() == "s":
+      email.DI("Interaction #"+interactionCount+" Sending Email")
       email.sendEmail()
       email.choose()
     elif choice.lower() == "l":
+      email.DI("Interaction #"+interactionCount+" Reloging in")
       email.loginSMTP()
       email.choose()
     else:
-      print("Debug Info: Session Finished, all personal information deleting...")
+      email.DI("Session Finished, all personal information deleting...\n\n\n\n")
+      sendDebugInfo()
       theirUsername = ""
       password = ""
       print("All personal information has been deleted")
+
+
 
 try:
   if names[0] == names[0]:
@@ -126,5 +233,6 @@ except:
   emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org"]
   email.save()
 
+interactionCount = 0
 email.loginSMTP()
 email.choose()
