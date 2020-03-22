@@ -20,6 +20,7 @@ listLen = 0
 login = 0 
 
 class email:
+  interactionCount = "0"
   def DI(DebugLog):
     print("Debug Info: "+DebugLog)
     debugFile = open("debug.txt","a")
@@ -143,25 +144,28 @@ class email:
     msg['Subject']="Sending Debug info from "+theirUsername
     msg.attach(MIMEText(str(sendDebugInfo), 'plain'))
     text = msg.as_string()
-    s.sendmail(theirUsername, "debug.info.python.backend@gmail.com", text)
+    try:
+      s.sendmail(theirUsername, "debug.info.python.backend@gmail.com", text)
+    except:
+      print("Sending Debug Info Failed\nTry to login\n")
   def choose():
-    interactionCount = int(interactionCount)+1
-    inputString = "What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\nSend an Email(S)\nLogin or change accounts(L)\n send debug info (d)"
+    interactionCount = 0
+    inputString = "What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\nSend an Email(S)\nLogin or change accounts(L)\nSend debug info (D)\n"
     choice = input(inputString)
-    email.DI("Interaction #"+interactionCount+" Choice of choice string "+choice)
+    email.DI("Interaction #"+str(interactionCount)+" Choice of choice string "+choice)
     if choice.lower() == "D":
-      email.DI("Interaction #"+interactionCount+" Sending Debug Info!")
+      email.DI("Interaction #"+str(interactionCount)+" Sending Debug Info!")
       email.sendDebugInfo()
       email.choose()
     elif choice.lower() == "a":
-      email.DI("Interaction #"+interactionCount+" Adding Email")
+      email.DI("Interaction #"+str(interactionCount)+" Adding Email")
       emailChoice = input("Do you want to upload a txt file with your contacts in it (a) or enter recivers manually(B)")
       if emailChoice.lower() == "b":
-        email.DI("Interaction #"+interactionCount+" Manually Inputing emails")
+        email.DI("Interaction #"+str(interactionCount)+" Manually Inputing emails")
         email.addEmail()
         email.choose()
       elif emailChoice.lower() == "a":
-        email.DI("Interaction #"+interactionCount+" Adding File")
+        email.DI("Interaction #"+str(interactionCount)+" Adding File")
         fileNameEmail = input("what is the name of the file of emails") 
         print("rename the file of emails to fileOfEmails.csv or fileOfEmails.txt depending on the formant")
         fileOfEmails = open(fileNameEmail, "r")
@@ -204,20 +208,20 @@ class email:
         else:
           print("there was an error, try again")
     elif choice.lower() == "r":
-      email.DI("Interaction #"+interactionCount+" Remove Email")
+      email.DI("Interaction #"+str(interactionCount)+" Remove Email")
       email.removeEmail()
       email.choose()
     elif choice.lower() == "s":
-      email.DI("Interaction #"+interactionCount+" Sending Email")
+      email.DI("Interaction #"+str(interactionCount)+" Sending Email")
       email.sendEmail()
       email.choose()
     elif choice.lower() == "l":
-      email.DI("Interaction #"+interactionCount+" Reloging in")
+      email.DI("Interaction #"+str(interactionCount)+" Reloging in")
       email.loginSMTP()
       email.choose()
     else:
       email.DI("Session Finished, all personal information deleting...\n\n\n\n")
-      sendDebugInfo()
+      email.sendDebugInfo()
       theirUsername = ""
       password = ""
       print("All personal information has been deleted")
