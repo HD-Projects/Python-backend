@@ -1,11 +1,14 @@
 import smtplib
+import ssl
 ThatFile = open("lists.py", "a")
 ThatFile.close()
 from lists import *
+import getpass
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-s = smtplib.SMTP('smtp.gmail.com', 587) 
+context = ssl.create_default_context()
+s = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
 
 username = ""
 password = ""
@@ -13,8 +16,6 @@ password = ""
 name = ""
 theirUsername = ""
 
-l = "smtp.gmail.com"
-s = smtplib.SMTP(l, 587)
 listLen = 0
 login = 0 
 
@@ -38,18 +39,18 @@ class email:
     password = str(input("What is your Gmail password?\n"))
     print("Debug Info: Username, "+  theirUsername+" Password, "+password)
     # Authentication
-    try:
-       s.starttls()
-       print("Debug Info: TLS Worked")
-    except:
-       print("Debug Info: TLS Failed") 
-    login = 0
+    #try:
+    #   s.starttls()
+    #   print("Debug Info: TLS Worked")
+    #except:
+    #   print("Debug Info: TLS Failed") 
+    #login = 0
     try: 
       s.login(str(theirUsername), str(password))
       login = 1
       print("Debug Info: Succesful you are now logged in and can send emails\n\n")
     except:
-      print("Debug Info: Login Failed \nTry changing you allow less secure app access in your gmail account settings, Or reenter your credentials\n\n")
+      print("Debug Info: Login Failed \Reenter your credentials\n\n")
       login = 0
   def addEmail():
     nameInput = str(input("What is the Name you would like to add to the name list\n"))
@@ -79,11 +80,6 @@ class email:
       if (index > 10):
         index = 0
         s.quit()
-        try:
-           s.starttls()
-           print("Debug Info: TLS Worked")
-        except:
-           print("Debug Info: TLS Failed") 
         try: 
           s.login(str(theirUsername), str(password))
           print("Debug Info: Succesful you are now logged in and can send emails\n\n")
