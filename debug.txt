@@ -1,0 +1,43 @@
+
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string S
+Debug Info: Interaction #0 Sending Email
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #1 Choice of choice string S
+Debug Info: Interaction #1 Sending Email
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #1 Choice of choice string S
+Debug Info: Interaction #1 Sending Email
+Debug Info: Failed to send email the user did not want to send to the list
+Debug Info: Interaction #2 Choice of choice string L
+Debug Info: Interaction #2 Reloging in
+Debug Info: Debug Info: Username, debug.info.python.backend@gmail.com Password, pythonBackend1
+Debug Info: Interaction #3 Choice of choice string debug.info.python.backend@gmail.com
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username, debug.info.python.backend@gmail.com Password, pythonBackend1
+Debug Info: Interaction #1 Choice of choice string D
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #1 Choice of choice string c
+Debug Info: Interaction #1 check mailbox
+Debug Info: Debug Info: Username, asteroid.dodge.devs@gmail.com Password, U&(9rB4IflE
+Debug Info: Interaction #1 Choice of choice string c
+Debug Info: Interaction #1 check mailbox
