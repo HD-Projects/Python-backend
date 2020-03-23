@@ -2,8 +2,50 @@
 Debug Info: Debug Info: Username,  Password, 
 Debug Info: Debug Info: Username,  Password, 
 Debug Info: Debug Info: Username,  Password, 
-Debug Info: Interaction #0 Choice of choice string S
-Debug Info: Interaction #0 Sending Email
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string D
+Debug Info: Interaction #0 send debug email
+Debug Info: Interaction #0 Choice of choice string l
+Debug Info: Interaction #0 Reloging in
+Debug Info: Debug Info: Username, a Password, 
+Debug Info: Debug Info: Username, asteroid.dodge.devs@gmail.com Password, U&(9rB4IflE
+Debug Info: Interaction #0 Choice of choice string D
+Debug Info: Interaction #0 send debug email
+Debug Info: Interaction #0 Choice of choice string A
+Debug Info: Interaction #0 Adding Email
+Debug Info: Interaction #0 Manually Inputing emails
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'me']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'rilesdk@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","me"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","rilesdk@gmail.com"]
+Debug Info: Added Email: rilesdk@gmail.comName: me
+Debug Info: Debug Info: Username, asteroid.dodge.devs@gmail.com Password, U&(9rB4IflE
+Debug Info: Interaction #0 Choice of choice string R
+Debug Info: Interaction #0 Remove Email
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username, asteroid.dodge.devs@gmail.com Password, U&(9rB4IflE
+Debug Info: Interaction #0 Choice of choice string D
+Debug Info: Debug Info: Username, asteroid.dodge.devs@gmail.com Password, U&(9rB4IflE
+Debug Info: Interaction #0 Choice of choice string e
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Debug Info: Username,  Password, 
 Debug Info: Interaction #0 Choice of choice string 
 Debug Info: Session Finished, all personal information deleting...
 
@@ -12,32 +54,5 @@ Debug Info: Session Finished, all personal information deleting...
 
 Debug Info: Debug Info: Username,  Password, 
 Debug Info: Debug Info: Username,  Password, 
-Debug Info: Interaction #1 Choice of choice string S
-Debug Info: Interaction #1 Sending Email
-Debug Info: Debug Info: Username,  Password, 
-Debug Info: Interaction #1 Choice of choice string S
-Debug Info: Interaction #1 Sending Email
-Debug Info: Failed to send email the user did not want to send to the list
-Debug Info: Interaction #2 Choice of choice string L
-Debug Info: Interaction #2 Reloging in
-Debug Info: Debug Info: Username, debug.info.python.backend@gmail.com Password, pythonBackend1
-Debug Info: Interaction #3 Choice of choice string debug.info.python.backend@gmail.com
-Debug Info: Session Finished, all personal information deleting...
-
-
-
-
-Debug Info: Debug Info: Username, debug.info.python.backend@gmail.com Password, pythonBackend1
-Debug Info: Interaction #1 Choice of choice string D
-Debug Info: Session Finished, all personal information deleting...
-
-
-
-
-Debug Info: Debug Info: Username,  Password, 
-Debug Info: Debug Info: Username,  Password, 
-Debug Info: Interaction #1 Choice of choice string c
-Debug Info: Interaction #1 check mailbox
-Debug Info: Debug Info: Username, asteroid.dodge.devs@gmail.com Password, U&(9rB4IflE
-Debug Info: Interaction #1 Choice of choice string c
-Debug Info: Interaction #1 check mailbox
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Interaction #0 Enabled debug info show
