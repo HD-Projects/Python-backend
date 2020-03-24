@@ -3,7 +3,7 @@ import smtplib
 import ssl
 ThatFile = open("lists.py", "a")#BeautifulSoup
 ThatFile.close()
-from lists import (names,emails,debugLogEnabled)
+from lists import *
 import getpass
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -46,7 +46,7 @@ class email:
     i = 1
     for i in range(len(emails)-1):
       stringToSave = stringToSave+'"'+emails[i]+'",'
-    stringToSave = stringToSave+'"'+emails[(len(emails)-1)]+'"]'+"\ndebugLogEnabled = "+debugLogEnabled
+    stringToSave = stringToSave+'"'+emails[(len(emails)-1)]+'"]'+"\ndebugLogEnabled = "+str(debugLogEnabled)
     theLists.write(str(stringToSave))
     email.DI("Saved String: \n"+stringToSave)
   def loginSMTP():
