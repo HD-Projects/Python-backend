@@ -201,9 +201,6 @@ class email:
     print("Emails in list:\n"+str(emails))
     print("Names in list:\n"+str(names))
     input("Press enter to continue...\n")
-
-
-
   def sendDebugInfo():
     debugInfoRead = open("debug.txt","r")
     sendDebugInfo = debugInfoRead.read()
@@ -221,7 +218,7 @@ class email:
       print("Sending Debug Info Failed\nTry to login\n")
   def choose(interactionCounts):
     interactionCounts = 0
-    inputString = "What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\nSend an Email(S)\nLogin or change accounts(L)\nSend debug info (D)\n or (E) check your email \n"
+    inputString = "What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\nSend an Email(S)\nLogin or change accounts(L)\nSend debug info (D)\nCheck your email for the word unsubscribe and delete their names\nShow mailing list(M)\n"
     choice = input(inputString)
     email.DI("Interaction #"+str(interactionCounts)+" Choice of choice string "+choice)
     
@@ -321,9 +318,6 @@ class email:
       theirUsername = ""
       password = ""
       print("All personal information has been deleted")
-
-
-
 try:
   if names[0] == names[0]:
     names = names

@@ -24,3 +24,22 @@ debugLogEnabled = 0
 Debug Info: Added Email: me@gmail.comName: Me
 Debug Info: Interaction #0 Choice of choice string l
 Debug Info: Interaction #0 Reloging in
+Debug Info: Debug Info: Username, asteroid.dodge.devs@gmail.com Password, U&(9rB4IflE
+Debug Info: Interaction #0 Choice of choice string A
+Debug Info: Interaction #0 Adding Email
+Debug Info: Interaction #0 Manually Inputing emails
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Me', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Me","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com"]
+debugLogEnabled = 0
+Debug Info: Added Email: mdickhans@gmail.comName: Matt
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Interaction #0 Enabled debug info show
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Me', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Me","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com"]
+debugLogEnabled = 1
