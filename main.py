@@ -14,12 +14,12 @@ import email
 context = ssl.create_default_context()
 s = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
 
-debugLogEnabled = 0
 username = ""
 password = ""
 interactionCounts = 0
 name = ""
 theirUsername = ""
+debugLogNum = 0
 
 listLen = 0
 login = 0 
@@ -28,10 +28,12 @@ class email:
   interactionCounts = 0
   def DI(DebugLog):
     global debugLogEnabled
+    global debugLogNum
     if(debugLogEnabled == 1):
-      print("Debug Info: "+DebugLog)
+      debugLogNum += 1
+      print(str(debugLogNum) + ": Debug Info: "+DebugLog)
     else:
-      debugLogEnabled = debugLogEnabled
+      debugLogNum += 1
     debugFile = open("debug.txt","a")
     debugFile.write("\nDebug Info: "+DebugLog)
     debugFile.close

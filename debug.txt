@@ -43,3 +43,165 @@ Debug Info: Saved String:
 names = ["Alex","Riley","Alex","Me","Matt"]
 emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com"]
 debugLogEnabled = 1
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string m
+Debug Info: Interaction #0 showing mailing list
+Debug Info: Interaction #0 Choice of choice string r
+Debug Info: Interaction #0 Remove Email
+Debug Info: Failed to find me in list
+Debug Info: Names:['Riley', 'Alex', 'Me', 'Matt']
+Debug Info: Emails:['rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Riley","Alex","Me","Matt"]
+emails = ["rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com"]
+debugLogEnabled = 0
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Interaction #0 Enabled debug info show
+Debug Info: Names:['Riley', 'Alex', 'Me', 'Matt']
+Debug Info: Emails:['rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Riley","Alex","Me","Matt"]
+emails = ["rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com"]
+debugLogEnabled = 1
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string m
+Debug Info: Interaction #0 showing mailing list
+Debug Info: Interaction #0 Choice of choice string r
+Debug Info: Interaction #0 Remove Email
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","mdickhans@gmail.com"]
+debugLogEnabled = 0
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string A
+Debug Info: Interaction #0 Adding Email
+Debug Info: Interaction #0 Manually Inputing emails
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Me', 'Matt', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Me","Matt","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com","mdickhans@gmail.com"]
+debugLogEnabled = 0
+Debug Info: Added Email: mdickhans@gmail.comName: Matt
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Interaction #0 Enabled debug info show
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Me', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Me","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com"]
+debugLogEnabled = 1
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string m
+Debug Info: Interaction #0 showing mailing list
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Interaction #0 Enabled debug info show
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Me', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Me","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com"]
+debugLogEnabled = 1
+Debug Info: Interaction #0 Choice of choice string a
+Debug Info: Interaction #0 Adding Email
+Debug Info: Interaction #0 Manually Inputing emails
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Me', 'Matt', 'Digby']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com', '']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Me","Matt","Digby"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com",""]
+debugLogEnabled = 1
+Debug Info: Added Email: Name: Digby
+Debug Info: Interaction #0 Choice of choice string r
+Debug Info: Interaction #0 Remove Email
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Me', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Me","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com"]
+debugLogEnabled = 1
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Interaction #0 Enabled debug info show
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Me', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Me","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com"]
+debugLogEnabled = 1
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string m
+Debug Info: Interaction #0 showing mailing list
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Interaction #0 Enabled debug info show
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Me', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'me@gmail.com', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Me","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","me@gmail.com","mdickhans@gmail.com"]
+debugLogEnabled = 1
+Debug Info: Interaction #0 Choice of choice string r
+Debug Info: Interaction #0 Remove Email
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","mdickhans@gmail.com"]
+debugLogEnabled = 1
+Debug Info: Interaction #0 Choice of choice string r
+Debug Info: Interaction #0 Remove Email
+Debug Info: Names:['Alex', 'Riley', 'Alex']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org"]
+debugLogEnabled = 1
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string m
+Debug Info: Interaction #0 showing mailing list
+Debug Info: Interaction #0 Choice of choice string python-backend-is-a-level-11-human
+Debug Info: Interaction #0 Enabled debug info show
+Debug Info: Names:['Alex', 'Riley', 'Alex']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org"]
+debugLogEnabled = 1
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string m
+Debug Info: Interaction #0 showing mailing list
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
