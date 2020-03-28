@@ -1,15 +1,24 @@
+
+
+
 #U&(9rB4IflE
 import smtplib
 import ssl
 ThatFile = open("lists.py", "a")#BeautifulSoup
 ThatFile.close()
+from termcolor import cprint
 from lists import *
 import getpass
-from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import smtplib
+import mimetypes
+import email.mime.application
 import imaplib
+import imaplib as mail
 import email
-
+mail = imaplib.IMAP4_SSL("imap.gmail.com")
+import bs4
 
 context = ssl.create_default_context()
 s = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
@@ -30,8 +39,12 @@ class email:
     global debugLogEnabled
     global debugLogNum
     if(debugLogEnabled == 1):
+<<<<<<< HEAD
+      cprint("Debug Info: "+DebugLog,"green")
+=======
       debugLogNum += 1
       print(str(debugLogNum) + ": Debug Info: "+DebugLog)
+>>>>>>> origin/master
     else:
       debugLogNum += 1
     debugFile = open("debug.txt","a")
@@ -58,9 +71,10 @@ class email:
     try: 
       s.login(str(theirUsername), str(password))
       login = 1
-      print("\nDebug Info: Succesful you are now logged in and can send emails\n\n")
+      cprint("\nDebug Info: Succesful you are now logged in and can send emails\n\n", "green")
+      
     except:
-      print("Debug Info: Login Failed \nReenter your credentials\n or turn on less secure app access in your gmail account settings\n\n")
+      cprint("Debug Info: Login Failed \nReenter your credentials\n or turn on less secure app access in your gmail account settings\n\n", "red")
       login = 0
   def addEmail():
     nameInput = str(input("What is the Name you would like to add to the name list\n"))
@@ -69,13 +83,14 @@ class email:
     emails.append(emailInput)
     email.save()
     email.DI("Added Email: "+emailInput+"Name: "+nameInput)
-    
+  
   def checkEmail():
-    mail = imaplib.IMAP4_SSL("imap.gmail.com")
-    mail.login(theirUsername, password)
+    
+    s.login(str(theirUsername), str(password))
     mail.list()
     # Out: list of "folders" aka labels in gmail.
     mail.select("inbox") # connect to inbox.
+    
     #Get an email
     result, data = mail.uid('fetch', b'1', '(RFC822)')
     raw_email = data[0][1]
@@ -95,8 +110,7 @@ class email:
             soup = BeautifulSoup(html, 'html.parser')
 
 
-
-
+            
   def removeEmail():
     removeName = input("What is the name you want to remove\n")
     listLen = 0
@@ -107,7 +121,11 @@ class email:
     emails.remove(emails[listLen])
     names.remove(names[listLen])
     email.save()
+  def reportBug():
+    explainBug = input("Give us a brief overview of what happened and when it happened")
+    email.DI("User submited a bug, info brief overview \n\n"+explainBug)
   def sendEmail():
+    msg = MIMEMultipart()
     answer = str(input("This will send an email to all of these people \n"+str(names)+"\nAnd all these emails\n"+str(emails)+"\nWould you like to continue\nPress enter to continue and stop to return to main menu\n"))
     if answer == "":
       print("Continuing")
@@ -117,13 +135,24 @@ class email:
     subject = input("What Is The Subject Of Your Message \n")
     sendingName = input("What do you want your name to show as\n")
     html = input("Do you want to send html content(Y/N) \n")
-    index = 0
+    anyAttachments = input("Do you have any attachments you would like to add (Y/N)\n")
+    if anyAttachments.lower() == "y":
+      try:
+        pathOfFile = input("What is the path or name of the file\n")
+        files = open(pathOfFile, "r")
+        email.mime.application.MIMEApplication(files.read(),_subtype="extension of file")
+        attach.add_header('Content-Disposition','attachment',filename=pathOfFile)
+        msg.attach(file)
+      except:
+        cprint("Failed","red")
+        email.DI("Failed to attach message")
+      index = 0
     if html.lower() == "y":
       htmlFile = str(input("Make sure the file is in the same folder as the .EXE or .PY file\nWhat is the name of the file\n"))
       htmlFileOpened = open(htmlFile,"r")
       htmlContent = htmlFileOpened.read()
       htmlFileOpened.close()
-      msg['From']=sendingName
+      msg['From']=sendingName+"<"+theirUsername+">"
       msg['To']="*[Name]*"
       msg['Subject']=subject
       msg.attach(MIMEText(htmlContent, "html"))
@@ -146,7 +175,7 @@ class email:
           email.DI("Login Failed \n\n")
         msg = Multipart()       # create a message
         # setup the parameters of the message
-        msg['From']=sendingName
+        msg['From']=sendingName+"<"+theirUsername+">"
         msg['To']=emails[i]
         msg['Subject']=subject
         msg.attach(MIMEText(htmlContent, "html"))
@@ -169,7 +198,7 @@ class email:
         message = input("Message\nDear *[name]*,\n\n")
         nameOfSender = input("What is the name you would like at the end of your email?\n")
         title = input("What is your title (Dr. , Sir , Esquire)\n")
-      msg['From']=sendingName
+      msg['From']=sendingName+"<"+theirUsername+">"
       msg['To']="*[Name]*"
       msg['Subject']=subject
       msg.attach(MIMEText("Dear *[Name]*,\n\n"+str(message)+"\n\n"+signature, 'plain'))
@@ -191,7 +220,7 @@ class email:
             email.DI("Login Failed \n\n")
         msg = MIMEMultipart()       # create a message
         # setup the parameters of the message
-        msg['From']=sendingName
+        msg['From']=sendingName+"<"+theirUsername+">"
         msg['To']=emails[i]
         msg['Subject']=subject
         msg.attach(MIMEText("Dear "+names[i]+",\n\n"+str(message)+"\n\n"+signature, 'plain'))
