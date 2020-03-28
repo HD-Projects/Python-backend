@@ -39,12 +39,9 @@ class email:
     global debugLogEnabled
     global debugLogNum
     if(debugLogEnabled == 1):
-<<<<<<< HEAD
       cprint("Debug Info: "+DebugLog,"green")
-=======
       debugLogNum += 1
       print(str(debugLogNum) + ": Debug Info: "+DebugLog)
->>>>>>> origin/master
     else:
       debugLogNum += 1
     debugFile = open("debug.txt","a")

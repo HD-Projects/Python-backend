@@ -205,3 +205,17 @@ Debug Info: Session Finished, all personal information deleting...
 
 
 
+
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
