@@ -219,3 +219,35 @@ Debug Info: Session Finished, all personal information deleting...
 
 
 
+
+Debug Info: Debug Info: Username, asteroid.dodge.devs@gmail.com Password, U&(9rB4IflE
+Debug Info: Interaction #0 Choice of choice string m
+Debug Info: Interaction #0 showing mailing list
+Debug Info: Interaction #0 Choice of choice string Matt
+Debug Info: Session Finished, all personal information deleting...
+
+
+
+
+Debug Info: Debug Info: Username, asteroid.dodge.devs@gmail.com Password, U&(9rB4IflE
+Debug Info: Interaction #0 Choice of choice string m
+Debug Info: Interaction #0 showing mailing list
+Debug Info: Interaction #0 Choice of choice string A
+Debug Info: Interaction #0 Adding Email
+Debug Info: Interaction #0 Manually Inputing emails
+Debug Info: Names:['Alex', 'Riley', 'Alex', 'Matt']
+Debug Info: Emails:['adickhans@gmail.com', 'rilesdk@gmail.com', 'dickha.alexan27@svvsd.org', 'mdickhans@gmail.com']
+Debug Info: Saved String: 
+names = ["Alex","Riley","Alex","Matt"]
+emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","mdickhans@gmail.com"]
+debugLogEnabled = 1
+Debug Info: Added Email: mdickhans@gmail.comName: Matt
+Debug Info: Interaction #0 Choice of choice string S
+Debug Info: Interaction #0 Sending Email
+Debug Info: Failed to attach message
+Debug Info: Debug Info: Username,  Password, 
+Debug Info: Interaction #0 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+

@@ -1,6 +1,3 @@
-
-
-
 #U&(9rB4IflE
 import smtplib
 import ssl
@@ -82,12 +79,10 @@ class email:
     email.DI("Added Email: "+emailInput+"Name: "+nameInput)
   
   def checkEmail():
-    
-    s.login(str(theirUsername), str(password))
+    mail.login(str(theirUsername), str(password))
     mail.list()
     # Out: list of "folders" aka labels in gmail.
     mail.select("inbox") # connect to inbox.
-    
     #Get an email
     result, data = mail.uid('fetch', b'1', '(RFC822)')
     raw_email = data[0][1]
@@ -101,13 +96,9 @@ class email:
           html = str(part.get_payload())
         elif maintype == 'text':
             html = str(email_message.get_payload())
-
         #Now I Can parse HTML
         if html is not None:
             soup = BeautifulSoup(html, 'html.parser')
-
-
-            
   def removeEmail():
     removeName = input("What is the name you want to remove\n")
     listLen = 0
@@ -155,6 +146,7 @@ class email:
       msg.attach(MIMEText(htmlContent, "html"))
       text = msg.as_string()
       doContinue = input(text+"Would you like to confirm(Y/N)")
+      index = 0
       if doContinue.lower() == "y":
         print("You chose to continue")
       else:
@@ -170,7 +162,6 @@ class email:
           except:
             return 0      
           email.DI("Login Failed \n\n")
-        msg = Multipart()       # create a message
         # setup the parameters of the message
         msg['From']=sendingName+"<"+theirUsername+">"
         msg['To']=emails[i]
@@ -201,6 +192,7 @@ class email:
       msg.attach(MIMEText("Dear *[Name]*,\n\n"+str(message)+"\n\n"+signature, 'plain'))
       text = msg.as_string()
       doContinue = input(text+"Would you like to confirm(Y/N)")
+      index = 0
       if doContinue.lower() == "y":
         print("You chose to continue")
       else:
