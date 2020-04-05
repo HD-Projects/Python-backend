@@ -11,7 +11,7 @@ This is a project by 2 Students in the **VRC competive robotics program**, beacu
 
 * Send Etherum to 0x97e315b3A3c23fB1E6bBb1A0D10Ec91aAc8170F2
 * Send Bitcoin to 17ysk4PRZ1ZCLFPp9LhZssNU6T4JkqbY6r
-* Venmo @720-552-7647
+* Venmo @Hd-OpenSource
 * You can also donate with Brave and pressing the BAT button and send a tip
 
 These will all be greatly appreciated and these funds will go to our robotics team next year to buy software and robotics hardware.
