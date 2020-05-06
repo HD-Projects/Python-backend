@@ -16,4 +16,6 @@ This is a project by 2 Students in the **VRC competive robotics program**, beacu
 
 These will all be greatly appreciated and these funds will go to our robotics team next year to buy software and robotics hardware.
 
+View our website at https://hd-projects.github.io
+
 [![Run on Repl.it](https://repl.it/badge/github/ad101-lab/Python-backend)](https://repl.it/github/ad101-lab/Python-backend)
