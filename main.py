@@ -1,4 +1,3 @@
-#U&(9rB4IflE
 import smtplib
 import ssl
 ThatFile = open("lists.py", "a")#BeautifulSoup
@@ -61,7 +60,6 @@ class email:
   def loginSMTP():
     theirUsername = str(input("What is your Gmail account Email address? \n"))
     password = str(input("What is your Gmail password?\n"))
-    email.DI("Debug Info: Username, "+  theirUsername+" Password, "+password)
     try: 
       s.login(str(theirUsername), str(password))
       login = 1
