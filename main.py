@@ -13,8 +13,13 @@ import imaplib as mail
 import email
 mail = mail.IMAP4_SSL("imap.gmail.com")
 
+# Safe(er) password input
+import getpass
+
 # Import BS4
 from bs4 import BeautifulSoup
+
+# TODO: #3 #2 #1 Add JSON support
 
 # Create Dummy File to prevent opening errors
 ThatFile = open("lists.py", "a")
@@ -50,6 +55,7 @@ login = 0
 interactionCounts = 0
 
 class email:
+  
   def DI(DebugLog):
     """Adds String to debug file
 
@@ -80,23 +86,35 @@ class email:
     debugFile.close()
     
   def save():
-    email.DI("Names:"+str(names))
-    email.DI("Emails:"+str(emails))
+    """Saves all files
+    """
+    
+    # Debug log
+    
+    # Open lists
     theLists = open("lists.py", "w")
+    
+    # Create String
     stringToSave = 'names = ['
     for i in names:
       stringToSave = stringToSave+'"'+i+'",'
-      
+    
     stringToSave = stringToSave+'"'+names[(len(names)-1)]+'"]\nemails = ['
-    i = 1
+    
+    # Add emails
     for i in range(len(emails)-1):
       stringToSave = stringToSave+'"'+emails[i]+'",'
     stringToSave = stringToSave+'"'+emails[(len(emails)-1)]+'"]'+"\ndebugLogEnabled = "+str(debugLogEnabled)
     theLists.write(str(stringToSave))
     email.DI("Saved String: \n"+stringToSave)
   def loginSMTP():
+    """Promt user to log in
+    """    
+    
+    # Promt user for username and password
     theirUsername = str(input("What is your Gmail account Email address? \n"))
-    password = str(input("What is your Gmail password?\n"))
+    print("What is your Gmail password?\n")
+    password = str(getpass.getpass())
     try: 
       s.login(str(theirUsername), str(password))
       login = 1
@@ -183,14 +201,26 @@ class email:
     
     explainBug = input("Give us a brief overview of what happened and when it happened")
     email.DI("User submited a bug, info brief overview \n\n"+explainBug)
+    email.sendDebugInfo()
   def sendEmail():
+    """Sends an email with user input
+
+    Returns:
+        int: failed or not
+    """
+    
+    # Intsantiate a varable with the message 
     msg = MIMEMultipart()
+    
+    # Promt user
     answer = str(input("This will send an email to all of these people \n"+str(names)+"\nAnd all these emails\n"+str(emails)+"\nWould you like to continue\nPress enter to continue and stop to return to main menu\n"))
+    
     if answer == "":
       print("Continuing")
     else:
       email.DI("Failed to send email the user did not want to send to the list")
       return 0
+    
     subject = input("What Is The Subject Of Your Message \n")
     sendingName = input("What do you want your name to show as\n")
     html = input("Do you want to send html content(Y/N) \n")
@@ -201,7 +231,7 @@ class email:
         files = open(pathOfFile, "r")
         email.mime.application.MIMEApplication(files.read(),_subtype="extension of file")
         attach.add_header('Content-Disposition','attachment',filename=pathOfFile)
-        msg.attach(file)
+        msg.attach(files)
       except:
         email.DI("Failed to attach message")
       index = 0
@@ -289,11 +319,28 @@ class email:
         print("\n\nSent, "+text)
         msg = ""
   def showMailingList():
-    print("Emails in list:\n"+str(emails))
-    print("Names in list:\n"+str(names))
+    """Shows everyone in the mailing list
+    """
+    
+    # Adds all the emails in a better formtted list
+    emailString = ""
+    for i in emails:
+      emailString += i + ", "
+    
+    # Adds all the names in a better formtted list
+    nameString = ""
+    for i in names:
+      nameString += i + ", "
+    
+    #  Print it to console
+    print("Emails in list:\n"+str(emailString))
+    print("Names in list:\n"+str(nameString))
     input("Press enter to continue...\n")
   
   def sendDebugInfo():
+    """Sends debug email from the default email
+    """
+       
     debugInfoRead = open("debug.txt","r")
     sendDebugInfo = debugInfoRead.read()
     debugInfoRead.close()
@@ -310,6 +357,9 @@ class email:
       print("Sending Debug Info Failed\nTry to login\n")
   
   def choose():
+    """The function to get user input on which  function to call
+    """
+       
     global interactionCounts, debugLogEnabled
     
     # Increment interaction counts
@@ -413,21 +463,32 @@ class email:
       email.sendDebugInfo()
       email.choose()
     else:
-      email.DI("Session Finished, all personal information deleting...\n\n\n\n")
-      email.sendDebugInfo()
+      # Send Debug info if they allow it
+      # TODO: Ask for permision
+      # email.sendDebugInfo()
+      
+      # null out values?
       theirUsername = ""
       password = ""
-      print("All personal information has been deleted")
+
+# Checking if info in lists works
 try:
+  
+  # If names varable exists
   if names[0] == names[0]:
-    names = names
-    emails = emails
+    pass
+    # Do nothing
+  
 except:
+  
+  # Create default information
   debugLogEnabled = 0
-  names = ["Alex", "Riley","Alex"]
-  emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org"]
+  names = ["Devs"]
+  emails = ["developers@hdprojects.dev"]
   email.save()
 
-interactionCounts = 0
-email.loginSMTP()
-email.choose()
+# Start program
+if __name__ == "__main__":
+  interactionCounts = 0
+  email.loginSMTP()
+  email.choose()
