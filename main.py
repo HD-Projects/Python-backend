@@ -1,55 +1,92 @@
+# Libraries for secure email sending
 import smtplib
 import ssl
-ThatFile = open("lists.py", "a")#BeautifulSoup
-ThatFile.close()
-from termcolor import cprint
-from lists import *
-import getpass
+
+# Import MIME libraries for emails
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-import smtplib
 import mimetypes
 import email.mime.application
-import imaplib
+
+# For inbox checking
 import imaplib as mail
 import email
-mail = imaplib.IMAP4_SSL("imap.gmail.com")
-import bs4
+mail = mail.IMAP4_SSL("imap.gmail.com")
 
+# Import BS4
+from bs4 import BeautifulSoup
+
+# Create Dummy File to prevent opening errors
+ThatFile = open("lists.py", "a")
+ThatFile.close()
+
+# Import email list
+from lists import *
+
+# Create ssl for security
 context = ssl.create_default_context()
+
+# Initiate email sending
 s = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context)
 
+# Instantiate username and password
 username = ""
 password = ""
-interactionCounts = 0
+
+# Instantiate name and username
 name = ""
 theirUsername = ""
+
+# Instantiate number of times email.DI() was called
 debugLogNum = 0
 
+# Instantiate varable for removeName function
 listLen = 0
+
+# Bool to keep track of the users logged in state
 login = 0 
 
+# Counts how many times it has looped
+interactionCounts = 0
+
 class email:
-  interactionCounts = 0
   def DI(DebugLog):
-    global debugLogEnabled
-    global debugLogNum
+    """Adds String to debug file
+
+    Args:
+        DebugLog (String): The string to log
+    """    
+    
+    # Global to acces varables outside of function
+    global debugLogEnabled, debugLogNum
+    
+    # If advanced debugging is on it will show in command line
     if(debugLogEnabled == 1):
-      cprint("Debug Info: "+DebugLog,"green")
+      
+      # increase times called
       debugLogNum += 1
+      
+      # Print to terminal
       print(str(debugLogNum) + ": Debug Info: "+DebugLog)
+      
     else:
+      
+      # increase times called
       debugLogNum += 1
-    debugFile = open("debug.txt","a")
+    
+    # Append and save debug log
+    debugFile = open("debug.log","a")
     debugFile.write("\nDebug Info: "+DebugLog)
-    debugFile.close
+    debugFile.close()
+    
   def save():
     email.DI("Names:"+str(names))
     email.DI("Emails:"+str(emails))
     theLists = open("lists.py", "w")
     stringToSave = 'names = ['
-    for i in range(len(names)-1):
-      stringToSave = stringToSave+'"'+names[i]+'",'
+    for i in names:
+      stringToSave = stringToSave+'"'+i+'",'
+      
     stringToSave = stringToSave+'"'+names[(len(names)-1)]+'"]\nemails = ['
     i = 1
     for i in range(len(emails)-1):
@@ -63,19 +100,30 @@ class email:
     try: 
       s.login(str(theirUsername), str(password))
       login = 1
-      cprint("\nDebug Info: Succesful you are now logged in and can send emails\n\n", "green")
+      print("\nDebug Info: Succesful you are now logged in and can send emails\n\n")
       
     except:
-      cprint("Debug Info: Login Failed \nReenter your credentials\n or turn on less secure app access in your gmail account settings\n\n", "red")
+      print("Debug Info: Login Failed \nReenter your credentials\n or turn on less secure app access in your gmail account settings\n\n")
       login = 0
+      
   def addEmail():
+    """Add Email to the mailing list locally
+    """
+    
+    # Ask for name input
     nameInput = str(input("What is the Name you would like to add to the name list\n"))
     names.append(nameInput)
+    
+    # ask for Email
     emailInput = str(input("What is the email of the reciver\n"))
     emails.append(emailInput)
+    
+    # Save file
     email.save()
-    email.DI("Added Email: "+emailInput+"Name: "+nameInput)
-  
+    
+    # Add to debug log
+    email.DI("Added Email")
+    
   def checkEmail():
     mail.login(str(theirUsername), str(password))
     mail.list()
@@ -97,17 +145,42 @@ class email:
         #Now I Can parse HTML
         if html is not None:
             soup = BeautifulSoup(html, 'html.parser')
-  def removeEmail():
-    removeName = input("What is the name you want to remove\n")
+  def removeEmail(emailName):
+    """Removes and email from the list
+
+    Args:
+        emailName (String): The name or email you want to remove
+    """    
+    
+    # init varable to keep track of index
     listLen = 0
+    
+    # Try finding it in list
     try:
-      listLen = names.index(removeName)
+      listLen = names.index(emailName)
     except:
-      email.DI("Failed to find "+removeName+" in list")
+      # If it is not in names look in emails
+      email.DI("Failed to find "+emailName+" in local name list, trying email")
+      listLen = emails.index(emailName)
+    
+    # Pop that item in list from both names and emails
     emails.remove(emails[listLen])
     names.remove(names[listLen])
+    
+    # Save email list
     email.save()
+    
+  def userRemoveEmail():
+    """Asks a user what email they want to remove
+    """
+    
+    # Ask for input
+    removeEmail(input("What is the name or email you want to remove.(Caps Sensitive)\n"))
+    
   def reportBug():
+    """Reports a but to the debug log
+    """    
+    
     explainBug = input("Give us a brief overview of what happened and when it happened")
     email.DI("User submited a bug, info brief overview \n\n"+explainBug)
   def sendEmail():
@@ -117,7 +190,7 @@ class email:
       print("Continuing")
     else:
       email.DI("Failed to send email the user did not want to send to the list")
-      return 0;
+      return 0
     subject = input("What Is The Subject Of Your Message \n")
     sendingName = input("What do you want your name to show as\n")
     html = input("Do you want to send html content(Y/N) \n")
@@ -130,7 +203,6 @@ class email:
         attach.add_header('Content-Disposition','attachment',filename=pathOfFile)
         msg.attach(file)
       except:
-        cprint("Failed","red")
         email.DI("Failed to attach message")
       index = 0
     if html.lower() == "y":
@@ -148,7 +220,7 @@ class email:
       if doContinue.lower() == "y":
         print("You chose to continue")
       else:
-        return 0;
+        return 0
       for i in range(len(names)):
         index += 1
         if (index > 10):
@@ -187,6 +259,7 @@ class email:
       msg['From']=sendingName+"<"+theirUsername+">"
       msg['To']="*[Name]*"
       msg['Subject']=subject
+      signature = title + nameOfSender
       msg.attach(MIMEText("Dear *[Name]*,\n\n"+str(message)+"\n\n"+signature, 'plain'))
       text = msg.as_string()
       doContinue = input(text+"Would you like to confirm(Y/N)")
@@ -194,7 +267,7 @@ class email:
       if doContinue.lower() == "y":
         print("You chose to continue")
       else:
-        return 0;
+        return 0
       for i in range(len(names)):
         index += 1
         if (index > 10):
@@ -219,11 +292,12 @@ class email:
     print("Emails in list:\n"+str(emails))
     print("Names in list:\n"+str(names))
     input("Press enter to continue...\n")
+  
   def sendDebugInfo():
     debugInfoRead = open("debug.txt","r")
     sendDebugInfo = debugInfoRead.read()
     debugInfoRead.close()
-    msg = MIMEMultipart()       # create a message
+    msg = MIMEMultipart()
     # setup the parameters of the message
     msg['From']=theirUsername
     msg['To']="debug.info.python.backend@gmail.com"
@@ -234,33 +308,41 @@ class email:
       s.sendmail(theirUsername, "debug.info.python.backend@gmail.com", text)
     except:
       print("Sending Debug Info Failed\nTry to login\n")
-  def choose(interactionCounts):
-    interactionCounts = 0
+  
+  def choose():
+    global interactionCounts, debugLogEnabled
+    
+    # Increment interaction counts
+    interactionCounts += 1
+    
+    # User choice
     inputString = "What do you want to do:\n\nAdd An Email from you sending list(A)\nRemove an email from you sending list(R)\nSend an Email(S)\nLogin or change accounts(L)\nSend debug info (D)\nCheck your email for the word unsubscribe and delete their names\nShow mailing list(M)\n"
     choice = input(inputString)
+    
+    # Add to debug log
     email.DI("Interaction #"+str(interactionCounts)+" Choice of choice string "+choice)
     
     if choice.lower() ==  "python-backend-is-a-level-11-human":
-      global debugLogEnabled
+      # Turn on debug logging
       debugLogEnabled = 1
       email.DI("Interaction #"+str(interactionCounts)+" Enabled debug info show")
       email.save()
-      email.choose((interactionCounts+1))
+      email.choose()
     elif choice.lower() == "e":
       email.checkEmail()
-      email.DI("Interaction #"+str(interactionCounst)+" Sending Debug Info!")
-      email.choose((interactionCounts+1))
+      email.DI("Interaction #"+str(interactionCounts)+" Sending Debug Info!")
+      email.choose()
     elif choice.lower() == "d":
       email.DI("Interaction #"+str(interactionCounts)+" Sending Debug Info!")
       email.sendDebugInfo()
-      email.choose((interactionCounts+1))
+      email.choose()
     elif choice.lower() == "a":
       email.DI("Interaction #"+str(interactionCounts)+" Adding Email")
       emailChoice = input("Do you want to upload a txt file with your contacts in it (a) or enter recivers manually(B)")
       if emailChoice.lower() == "b":
         email.DI("Interaction #"+str(interactionCounts)+" Manually Inputing emails")
         email.addEmail()
-        email.choose((interactionCounts+1))
+        email.choose()
       elif emailChoice.lower() == "a":
         email.DI("Interaction #"+str(interactionCounts)+" Adding File")
         fileNameEmail = input("what is the name of the file of emails") 
@@ -312,24 +394,24 @@ class email:
           print("there was an error, try again")
     elif choice.lower() == "r":
       email.DI("Interaction #"+str(interactionCounts)+" Remove Email")
-      email.removeEmail()
-      email.choose((interactionCounts+1))
+      email.userRemoveEmail()
+      email.choose()
     elif choice.lower() == "s":
       email.DI("Interaction #"+str(interactionCounts)+" Sending Email")
       email.sendEmail()
-      email.choose((interactionCounts+1))
+      email.choose()
     elif choice.lower() == "l":
       email.DI("Interaction #"+str(interactionCounts)+" Reloging in")
       email.loginSMTP()
-      email.choose((interactionCounts+1))
+      email.choose()
     elif choice.lower() == "m":
       email.DI("Interaction #"+str(interactionCounts)+" showing mailing list")
       email.showMailingList()
-      email.choose((interactionCounts+1))
+      email.choose()
     elif choice.lower() == "d":
       email.DI("Interaction #"+str(interactionCounts)+" send debug email")
       email.sendDebugInfo()
-      email.choose((interactionCounts+1))
+      email.choose()
     else:
       email.DI("Session Finished, all personal information deleting...\n\n\n\n")
       email.sendDebugInfo()
@@ -348,4 +430,4 @@ except:
 
 interactionCounts = 0
 email.loginSMTP()
-email.choose((interactionCounts+1))
+email.choose()

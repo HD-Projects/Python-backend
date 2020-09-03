@@ -1,3 +1,3 @@
-names = ["Alex","Riley","Alex","Matt"]
-emails = ["adickhans@gmail.com","rilesdk@gmail.com","dickha.alexan27@svvsd.org","mdickhans@gmail.com"]
-debugLogEnabled = 1
+names = ["Devs","The-Bit-One","The-Bit-One"]
+emails = ["developers@hdprojects.dev","rilesdk@gmail.com"]
+debugLogEnabled = 0

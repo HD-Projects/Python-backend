@@ -1,0 +1,24 @@
+
+Debug Info: Interaction #1 Choice of choice string l
+Debug Info: Interaction #1 Reloging in
+Debug Info: Interaction #2 Choice of choice string l
+Debug Info: Interaction #2 Reloging in
+Debug Info: Interaction #3 Choice of choice string S
+Debug Info: Interaction #3 Sending Email
+Debug Info: Interaction #1 Choice of choice string A
+Debug Info: Interaction #1 Adding Email
+Debug Info: Interaction #1 Manually Inputing emails
+Debug Info: Names:['Devs', 'The-Bit-One']
+Debug Info: Emails:['developers@hdprojects.dev', 'rilesdk@gmail.com']
+Debug Info: Saved String: 
+names = ["Devs","The-Bit-One","The-Bit-One"]
+emails = ["developers@hdprojects.dev","rilesdk@gmail.com"]
+debugLogEnabled = 0
+Debug Info: Added Email
+Debug Info: Interaction #2 Choice of choice string s
+Debug Info: Interaction #2 Sending Email
+Debug Info: Interaction #3 Choice of choice string 
+Debug Info: Session Finished, all personal information deleting...
+
+
+
