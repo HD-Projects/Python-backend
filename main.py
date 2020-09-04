@@ -471,24 +471,24 @@ class email:
       theirUsername = ""
       password = ""
 
-# Checking if info in lists works
-try:
-  
-  # If names varable exists
-  if names[0] == names[0]:
-    pass
-    # Do nothing
-  
-except:
-  
-  # Create default information
-  debugLogEnabled = 0
-  names = ["Devs"]
-  emails = ["developers@hdprojects.dev"]
-  email.save()
-
 # Start program
 if __name__ == "__main__":
+  # Checking if info in lists works
+  try:
+    
+    # If names varable exists
+    if names[0] == names[0]:
+      pass
+      # Do nothing
+    
+  except:
+    
+    # Create default information
+    debugLogEnabled = 0
+    names = ["Devs"]
+    emails = ["developers@hdprojects.dev"]
+    email.save()
+    
   interactionCounts = 0
   email.loginSMTP()
   email.choose()
