@@ -464,7 +464,7 @@ class email:
       email.choose()
     else:
       # Send Debug info if they allow it
-      # TODO: Ask for permision
+      # TODO: #4 Ask for permision
       # email.sendDebugInfo()
       
       # null out values?
