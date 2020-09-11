@@ -3,6 +3,7 @@
 [![Run on Repl.it](https://repl.it/badge/github/ad101-lab/Python-backend)](https://repl.it/github/ad101-lab/Python-backend)
 [![CodeFactor](https://www.codefactor.io/repository/github/hd-projects/python-backend/badge)](https://www.codefactor.io/repository/github/hd-projects/python-backend)
 [![Gitter](https://badges.gitter.im/HD-Projects/community.svg)](https://gitter.im/HD-Projects/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![GitHub version](https://badge.fury.io/gh/hd-projects%2Fpython-backend.svg)](https://badge.fury.io/gh/hd-projects%2Fpython-backend)
 
 This is a project by 2 Students in the **VRC competive robotics program**, beacuse our season was ended abruptly because of COVID-19. We had plenty of extra time so we wanted a project to work on so we made a game and started work on a email client
 
